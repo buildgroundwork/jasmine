@@ -7,7 +7,11 @@ module.exports = function(grunt) {
     concat: require('./grunt/config/concat.js'),
     sass: require('./grunt/config/sass.js'),
     compress: require('./grunt/config/compress.js'),
-    cssUrlEmbed: require('./grunt/config/cssUrlEmbed.js')
+    cssUrlEmbed: require('./grunt/config/cssUrlEmbed.js'),
+    jshint: {
+      options: { jshintrc: true },
+      all: ['Gruntfile.js', 'lib/**/*.js', 'spec/**/*.js']
+    },
   });
 
   require('load-grunt-tasks')(grunt);
@@ -54,4 +58,5 @@ module.exports = function(grunt) {
       require("shelljs").exec("node_modules/.bin/jasmine JASMINE_CONFIG_PATH=spec/support/jasmine-performance.json");
     }
   );
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 };
